@@ -1,15 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import ReactStars from "react-rating-stars-component"; // Install: npm i react-rating-stars-component
+import { useCartWishlist } from "../CartWishlist/CartWishlistContext";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const { addToCart, addToWishlist, wishlist } = useCartWishlist();
 
   useEffect(() => {
-    fetch("/productData.json")
+    fetch("../../../public/productData.json")
       .then((response) => response.json())
       .then((data) => {
-        const foundProduct = data.find((item) => item.product_id === productId);
+        const foundProduct = data.find(
+          (item) => item.product_id === (productId)
+        );
         setProduct(foundProduct);
       });
   }, [productId]);
@@ -17,6 +23,10 @@ const ProductDetails = () => {
   if (!product) {
     return <div className="text-center">Product Not Found! {productId}</div>;
   }
+
+  const isInWishlist = wishlist.some(
+    (item) => item.product_id === product.product_id
+  );
 
   return (
     <>
@@ -55,7 +65,36 @@ const ProductDetails = () => {
           <p className="mt-4">
             Availability: {product.availability ? "In Stock" : "Out of Stock"}
           </p>
-          <p className="mt-2">Rating: ⭐{product.rating}/5</p>
+          <div className="mt-2">
+            <ReactStars
+              count={5}
+              value={product.rating}
+              size={24}
+              activeColor="#ffd700"
+              edit={false}
+            />
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-4 mt-6">
+            <button
+              onClick={() => addToCart(product)}
+              className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              <FaShoppingCart /> Add to Cart
+            </button>
+            <button
+              onClick={() => addToWishlist(product)}
+              className={`flex items-center gap-2 ${
+                isInWishlist ? "bg-gray-400" : "bg-red-500"
+              } text-white px-4 py-2 rounded hover:${
+                isInWishlist ? "bg-gray-400" : "bg-red-600"
+              }`}
+              disabled={isInWishlist}
+            >
+              <FaHeart /> {isInWishlist ? "Added" : "Add to Wishlist"}
+            </button>
+          </div>
         </div>
       </div>
     </>

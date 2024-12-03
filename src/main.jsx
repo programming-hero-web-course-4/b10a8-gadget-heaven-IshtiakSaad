@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import "@fontsource/sora";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import { CartWishlistProvider } from "./components/CartWishlist/CartWishlistContext";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CartWishlistProvider>
+      <RouterProvider router={router} />
+      </CartWishlistProvider>
   </React.StrictMode>
 );
