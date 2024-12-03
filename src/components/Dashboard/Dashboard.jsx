@@ -1,10 +1,18 @@
 import { useCartWishlist } from "../CartWishlist/CartWishlistContext";
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import './Dashboard.css';
+import "./Dashboard.css";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
-  const { cart, wishlist, removeFromCart, removeFromWishlist, addToCart, clearCart } = useCartWishlist(); // Add clearCart from context
+  const {
+    cart,
+    wishlist,
+    removeFromCart,
+    removeFromWishlist,
+    addToCart,
+    clearCart,
+  } = useCartWishlist(); // Add clearCart from context
   const [activeTab, setActiveTab] = useState("cart");
   const [isSorted, setIsSorted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -37,10 +45,14 @@ const Dashboard = () => {
 
   return (
     <div className="bg-base-200 min-h-screen">
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       <div className="text-center text-white bg-purple-500 py-8">
         <h1 className="text-4xl font-extrabold">Dashboard</h1>
         <p className="text-sm mt-2">
-          Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!
+          Explore the latest gadgets that will take your experience to the next
+          level. From smart devices to the coolest accessories, we have it all!
         </p>
         <div className="mt-4">
           <button
@@ -96,8 +108,12 @@ const Dashboard = () => {
                       />
                       <div>
                         <h3 className="font-bold mb-2">{item.product_title}</h3>
-                        <p className="text-gray-500 mb-2 text-sm">{item.description}</p>
-                        <p className="font-bold mb-2">Price: ${item.price.toFixed(2)}</p>
+                        <p className="text-gray-500 mb-2 text-sm">
+                          {item.description}
+                        </p>
+                        <p className="font-bold mb-2">
+                          Price: ${item.price.toFixed(2)}
+                        </p>
                       </div>
                     </div>
                     <button
@@ -131,8 +147,12 @@ const Dashboard = () => {
                       />
                       <div>
                         <h3 className="font-bold mb-2">{item.product_title}</h3>
-                        <p className="text-gray-500 mb-2 text-sm">{item.description}</p>
-                        <p className="font-bold mb-2">Price: ${item.price.toFixed(2)}</p>
+                        <p className="text-gray-500 mb-2 text-sm">
+                          {item.description}
+                        </p>
+                        <p className="font-bold mb-2">
+                          Price: ${item.price.toFixed(2)}
+                        </p>
                       </div>
                     </div>
                     <div className="flex gap-2 justify-center items-center">
@@ -166,7 +186,11 @@ const Dashboard = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full text-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/7518/7518799.png" alt="" className="w-1/2 mx-auto mb-2" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/7518/7518799.png"
+              alt=""
+              className="w-1/2 mx-auto mb-2"
+            />
             <h2 className="text-xl font-bold mb-4">Congratulations!</h2>
             <p className="mb-4">Your purchase was successful.</p>
             <button

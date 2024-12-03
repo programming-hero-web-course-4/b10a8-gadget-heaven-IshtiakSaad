@@ -24,21 +24,24 @@ const NavBar = () => {
   const getLinkClass = (path) => {
     const homepageClasses = {
       active: "text-purple-800 bg-purple-200 font-bold",
-      base: "" 
+      base: "",
     };
-  
+
     const otherPageClasses = {
       active: "text-white bg-purple-500 font-bold",
-      base: "" 
+      base: "",
     };
 
     const isActive = location.pathname === path;
 
     return isHomePage
-      ? isActive ? homepageClasses.active : homepageClasses.base
-      : isActive ? otherPageClasses.active : otherPageClasses.base;
+      ? isActive
+        ? homepageClasses.active
+        : homepageClasses.base
+      : isActive
+      ? otherPageClasses.active
+      : otherPageClasses.base;
   };
-  
 
   const links = (
     <>
@@ -69,11 +72,11 @@ const NavBar = () => {
     <div
       className={`navbar w-full transition-all duration-300 py-6 ${
         isHomePage
-          ? isScrolled 
+          ? isScrolled
             ? "fixed top-0 text-white bg-purple-500"
-            :"fixed top-0 text-white"
-             // Apply purple bg and white text on homepage
-          : "bg-white text-purple-500" // Different style for other pages
+            : "fixed top-0 text-white"
+          : // Apply purple bg and white text on homepage
+            "bg-white text-purple-500" // Different style for other pages
       }`}
     >
       <div className="w-11/12 mx-auto flex items-center justify-between px-4">
@@ -90,25 +93,27 @@ const NavBar = () => {
         <div className="flex items-center space-x-4">
           {/* Cart Icon with Badge */}
           <div className="indicator btn btn-circle w-12">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            {cart.length > 0 && (
-              <span className="badge badge-sm indicator-item bg-green-500">
-                {cart.length}
-              </span>
-            )}
+            <Link to='/dashboard'>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              {cart.length > 0 && (
+                <span className="badge badge-sm indicator-item bg-green-500">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
           </div>
 
           {/* Wishlist Icon */}

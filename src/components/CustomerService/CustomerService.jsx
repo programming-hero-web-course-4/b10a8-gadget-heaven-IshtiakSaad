@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const CustomerService = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,9 @@ const CustomerService = () => {
 
   return (
     <div className="bg-base-200 min-h-screen">
+        <Helmet>
+        <title>Customer Care</title>
+        </Helmet>
       <div className="text-center text-white bg-purple-500 py-16">
         <h1 className="text-4xl font-extrabold">Customer Service</h1>
         <p className="text-sm mt-2">

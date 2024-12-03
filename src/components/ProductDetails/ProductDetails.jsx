@@ -5,6 +5,7 @@ import ReactStars from "react-rating-stars-component"; // Install: npm i react-r
 import { useCartWishlist } from "../CartWishlist/CartWishlistContext";
 import { toast, ToastContainer } from "react-toastify"; // Importing Toastify
 import "react-toastify/dist/ReactToastify.css"; // Importing Toastify styles
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -31,19 +32,22 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     addToCart(product);
     toast.success(`${product.product_title} has been added to your cart!`, {
-        position: "top-center"
+      position: "top-center",
     });
   };
 
   const handleAddToWishlist = () => {
     addToWishlist(product);
     toast.success(`${product.product_title} has been added to your wishlist!`, {
-        position: "top-center"
+      position: "top-center",
     });
   };
 
   return (
     <>
+      <Helmet>
+        <title>Details</title>
+      </Helmet>
       <div className="mb-20">
         <div className="font-sans w-full">
           <div className="text-center text-white bg-purple-500 pt-4 pb-28">
