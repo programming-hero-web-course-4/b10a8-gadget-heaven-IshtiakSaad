@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartWishlistContext = createContext();
 
@@ -9,19 +9,41 @@ export const CartWishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    if (!cart.some((item) => item.product_id === product.product_id)) {
+      setCart([...cart, product]);
+    }
   };
 
   const addToWishlist = (product) => {
-    setWishlist((prevWishlist) =>
-      prevWishlist.some((item) => item.product_id === product.product_id)
-        ? prevWishlist
-        : [...prevWishlist, product]
-    );
+    if (!wishlist.some((item) => item.product_id === product.product_id)) {
+      setWishlist([...wishlist, product]);
+    }
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(cart.filter((item) => item.product_id !== productId));
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist(wishlist.filter((item) => item.product_id !== productId));
+  };
+
+  const clearCart = () => {
+    setCart([]); // Or whichever state management solution you're using
   };
 
   return (
-    <CartWishlistContext.Provider value={{ cart, wishlist, addToCart, addToWishlist }}>
+    <CartWishlistContext.Provider
+      value={{
+        cart,
+        wishlist,
+        clearCart,
+        addToCart,
+        addToWishlist,
+        removeFromCart,
+        removeFromWishlist,
+      }}
+    >
       {children}
     </CartWishlistContext.Provider>
   );

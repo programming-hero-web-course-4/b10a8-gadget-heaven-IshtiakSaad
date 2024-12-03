@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="mb-20">
-      <div className="font-sans rounded-xl border-solid border-2 p-1 mt-2 w-11/12 mx-auto">
+      <div className="font-sans rounded-xl border-solid border-2 p-1 w-11/12 mx-auto">
         <div className="text-center text-white bg-purple-500 rounded-lg pt-32 pb-28">
           <div className="max-w-full">
             <h1 className="font-sans text-3xl font-extrabold w-2/3 mx-auto">

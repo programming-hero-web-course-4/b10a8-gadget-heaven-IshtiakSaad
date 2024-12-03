@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import products from "../../../public/productData.json"; // Import the JSON array
 
@@ -46,11 +46,11 @@ const ProductList = () => {
             {filteredProducts.map((product) => (
               <div
                 key={product.product_id}
-                className="border rounded-lg shadow-lg p-4"
+                className="border rounded-lg shadow-lg p-4 bg-base-50"
               >
                 <img
-                  //   src={product.product_image}
-                  src="https://www.androidheadlines.com/wp-content/uploads/2024/09/apple-iphone-16-2-1154x649.webp"
+                  src={product.product_image}
+                //   src="https://www.androidheadlines.com/wp-content/uploads/2024/09/apple-iphone-16-2-1154x649.webp"
                   alt={product.product_title}
                   className="w-full h-48 object-cover rounded"
                 />

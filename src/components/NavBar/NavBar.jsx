@@ -21,31 +21,57 @@ const NavBar = () => {
     };
   }, []);
 
+  const getLinkClass = (path) => {
+    const homepageClasses = {
+      active: "text-purple-800 bg-purple-200 font-bold",
+      base: "" 
+    };
+  
+    const otherPageClasses = {
+      active: "text-white bg-purple-500 font-bold",
+      base: "" 
+    };
+
+    const isActive = location.pathname === path;
+
+    return isHomePage
+      ? isActive ? homepageClasses.active : homepageClasses.base
+      : isActive ? otherPageClasses.active : otherPageClasses.base;
+  };
+  
+
   const links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/" className={getLinkClass("/")}>
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/statistics">Statistics</Link>
+        <Link to="/statistics" className={getLinkClass("/statistics")}>
+          Statistics
+        </Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard" className={getLinkClass("/dashboard")}>
+          Dashboard
+        </Link>
       </li>
     </>
   );
 
   return (
     <div
-      className={`navbar w-full transition-all duration-300 ${
+      className={`navbar w-full transition-all duration-300 py-6 ${
         isHomePage
-          ? isScrolled
-            ? "fixed z-50 bg-white text-purple-500 shadow-md"
-            : "bg-transparent text-white"
-          : "bg-white text-purple-500"
+          ? isScrolled 
+            ? "fixed top-0 text-white bg-purple-500"
+            :"fixed top-0 text-white"
+             // Apply purple bg and white text on homepage
+          : "bg-white text-purple-500" // Different style for other pages
       }`}
     >
-      <div className="container w-9/12 mx-auto flex items-center justify-between px-4">
+      <div className="w-11/12 mx-auto flex items-center justify-between px-4">
         <div className="flex items-center space-x-4">
           <Link to="/" className="btn btn-ghost text-xl font-bold">
             Gadget Heaven
