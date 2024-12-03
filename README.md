@@ -1,10 +1,7 @@
 # Gadget Planet - E-Commerce Website  
 
 ## Live Website  
-[Live Demo](https://yourshop-demo-link.com)  
-
-## Requirement Document  
-[Requirement Document](https://example.com/requirement-doc-link)  
+[Live Demo](https://gadgets-imsaad.netlify.app/ )  
 
 ## Project Overview  
 Your Shop is a modern e-commerce platform where users can explore products, add them to their cart or wishlist, and make purchases seamlessly. The platform is built using React and Tailwind CSS, featuring a responsive design and interactive user experience.  
@@ -53,9 +50,3 @@ Your Shop is a modern e-commerce platform where users can explore products, add 
 
 ### Prerequisites  
 - Node.js and npm installed  
-
-### Installation  
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/yourusername/yourshop.git  
-   cd yourshop  
