@@ -29,7 +29,7 @@ export const CartWishlistProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    setCart([]); // Or whichever state management solution you're using
+    setCart([]); 
   };
 
   return (

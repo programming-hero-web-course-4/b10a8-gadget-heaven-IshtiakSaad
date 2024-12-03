@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
-import ReactStars from "react-rating-stars-component"; // Install: npm i react-rating-stars-component
+import ReactStars from "react-rating-stars-component"; 
 import { useCartWishlist } from "../CartWishlist/CartWishlistContext";
-import { toast, ToastContainer } from "react-toastify"; // Importing Toastify
-import "react-toastify/dist/ReactToastify.css"; // Importing Toastify styles
+import { toast, ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const { addToCart, addToWishlist, wishlist } = useCartWishlist();
 
   useEffect(() => {
-    fetch("../../../public/productData.json")
+    fetch("/productData.json")
       .then((response) => response.json())
       .then((data) => {
         const foundProduct = data.find((item) => item.product_id === productId);
@@ -121,7 +121,6 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* Toast Container to render the toast messages */}
       <ToastContainer />
     </>
   );

@@ -17,7 +17,6 @@ const CustomerService = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., sending the message to the backend)
     alert("Your message has been sent!");
     setFormData({ name: "", email: "", message: "" });
   };
@@ -79,7 +78,6 @@ const CustomerService = () => {
           </div>
         </div>
 
-        {/* Contact Form Section */}
         <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
           <form className="card-body">
             <div className="form-control">

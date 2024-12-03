@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import products from "../../../public/productData.json"; // Import the JSON array
+import products from "../../../public/productData.json"; 
 
-// Extract unique categories from the product list
 const categories = ["All", ...new Set(products.map((p) => p.category))];
 
 const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Filter products based on selected category
   const filteredProducts =
     selectedCategory === "All"
       ? products
@@ -20,7 +18,6 @@ const ProductList = () => {
         <h1>Explore Cutting-Edge Gadgets</h1>
       </div>
       <div className="flex justify-center">
-        {/* Left Category Panel */}
         <div className="w-52 p-4 rounded-lg">
           <h2 className="text-xl font-bold mb-4">Categories</h2>
           <ul className="space-y-2">
@@ -40,7 +37,6 @@ const ProductList = () => {
           </ul>
         </div>
 
-        {/* Right Product Display Panel */}
         <div className="w-3/4 p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
@@ -50,7 +46,6 @@ const ProductList = () => {
               >
                 <img
                   src={product.product_image}
-                //   src="https://www.androidheadlines.com/wp-content/uploads/2024/09/apple-iphone-16-2-1154x649.webp"
                   alt={product.product_title}
                   className="w-full h-48 object-cover rounded"
                 />

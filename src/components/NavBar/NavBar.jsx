@@ -7,7 +7,6 @@ const NavBar = () => {
   const isHomePage = location.pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Access cart and wishlist from the context
   const { cart, wishlist } = useCartWishlist();
 
   useEffect(() => {
@@ -75,8 +74,7 @@ const NavBar = () => {
           ? isScrolled
             ? "fixed top-0 text-white bg-purple-500"
             : "fixed top-0 text-white"
-          : // Apply purple bg and white text on homepage
-            "bg-white text-purple-500" // Different style for other pages
+          : "bg-white text-purple-500" 
       }`}
     >
       <div className="w-11/12 mx-auto flex items-center justify-between px-4">
@@ -91,7 +89,6 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="flex items-center space-x-4">
-          {/* Cart Icon with Badge */}
           <div className="indicator btn btn-circle w-12">
             <Link to='/dashboard'>
               <svg
@@ -116,7 +113,6 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {/* Wishlist Icon */}
           <div className="indicator btn btn-circle w-12">
             <svg
               xmlns="http://www.w3.org/2000/svg"

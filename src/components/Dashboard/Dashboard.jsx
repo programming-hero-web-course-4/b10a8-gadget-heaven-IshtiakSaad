@@ -12,16 +12,15 @@ const Dashboard = () => {
     removeFromWishlist,
     addToCart,
     clearCart,
-  } = useCartWishlist(); // Add clearCart from context
+  } = useCartWishlist(); 
   const [activeTab, setActiveTab] = useState("cart");
   const [isSorted, setIsSorted] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const navigate = useNavigate(); // For redirection
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const navigate = useNavigate();
 
-  // Use useMemo to only recompute the sorted cart when cart or isSorted changes
   const sortedCart = useMemo(() => {
     return isSorted
-      ? [...cart].sort((a, b) => a.price - b.price) // Ascending order by price
+      ? [...cart].sort((a, b) => a.price - b.price) 
       : cart;
   }, [isSorted, cart]);
 
@@ -30,17 +29,13 @@ const Dashboard = () => {
   }, [cart]);
 
   const handlePurchase = () => {
-    // Clear the entire cart at once using clearCart
     clearCart();
-
-    // Open modal after cart is cleared
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    // Close the modal and navigate to the home page
     setIsModalOpen(false);
-    navigate("/"); // Redirect to home page
+    navigate("/");
   };
 
   return (
@@ -86,7 +81,7 @@ const Dashboard = () => {
                 <button
                   onClick={handlePurchase}
                   className="btn btn-sm rounded-full bg-purple-500 text-white border-purple-500"
-                  disabled={cart.length === 0 || totalCost === "0.00"} // Disable button if cart is empty or total is 0
+                  disabled={cart.length === 0 || totalCost === "0.00"} 
                 >
                   Purchase
                 </button>
@@ -182,7 +177,6 @@ const Dashboard = () => {
         )}
       </div>
 
-      {/* Modal for Purchase Confirmation */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full text-center">
