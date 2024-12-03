@@ -13,6 +13,7 @@ import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import "@fontsource/sora";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { CartWishlistProvider } from "./components/CartWishlist/CartWishlistContext";
+import CustomerService from "./components/CustomerService/CustomerService";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         {
             path: 'dashboard',
             element: <Dashboard></Dashboard>
+        },
+        {
+            path: 'service',
+            element: <CustomerService></CustomerService>
         },
         {
             path: "/product/:productId", 

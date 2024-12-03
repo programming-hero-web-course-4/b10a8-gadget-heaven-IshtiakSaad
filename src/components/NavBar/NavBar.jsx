@@ -57,6 +57,11 @@ const NavBar = () => {
           Dashboard
         </Link>
       </li>
+      <li>
+        <Link to="/service" className={getLinkClass("/service")}>
+          Customer Service
+        </Link>
+      </li>
     </>
   );
 
